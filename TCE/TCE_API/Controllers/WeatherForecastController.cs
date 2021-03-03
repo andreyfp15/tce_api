@@ -21,6 +21,7 @@ namespace TCE_API.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+
         }
 
         [HttpGet]
