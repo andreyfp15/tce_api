@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using TCE_API.Repositories;
 
 namespace TCE_API
 {
@@ -25,6 +19,10 @@ namespace TCE_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IConfiguration>(_ => Configuration);
+
+            services.AddTransient<UserRepository>();
+
             services.AddControllers();
         }
 
@@ -35,6 +33,12 @@ namespace TCE_API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(config => {
+                config.AllowAnyHeader();
+                config.AllowAnyMethod();
+                config.AllowAnyOrigin();
+            });
 
             app.UseHttpsRedirection();
 

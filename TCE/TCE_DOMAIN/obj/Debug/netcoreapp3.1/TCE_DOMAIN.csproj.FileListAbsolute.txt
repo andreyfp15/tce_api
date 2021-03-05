@@ -1,0 +1,9 @@
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\bin\Debug\netcoreapp3.1\TCE_DOMAIN.deps.json
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\bin\Debug\netcoreapp3.1\TCE_DOMAIN.dll
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.csprojAssemblyReference.cache
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.AssemblyInfoInputs.cache
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.AssemblyInfo.cs
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\bin\Debug\netcoreapp3.1\TCE_DOMAIN.pdb
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.csproj.CoreCompileInputs.cache
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.dll
+C:\Users\Smart\Source\repos\tce_api\TCE\TCE_DOMAIN\obj\Debug\netcoreapp3.1\TCE_DOMAIN.pdb
