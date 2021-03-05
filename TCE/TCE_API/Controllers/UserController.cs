@@ -31,7 +31,7 @@ namespace TCE_API.Controllers
         }
 
         // PUT api/<UserController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromServices] UserRepository userRepository, [FromBody] UserModel user)
         {
             userRepository.Update(user);

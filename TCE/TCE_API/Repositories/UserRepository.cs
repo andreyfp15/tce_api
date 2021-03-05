@@ -28,7 +28,7 @@ namespace TCE_API.Repositories
         {
             using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                return _conn.QueryFirst<UserModel>("SELECT * FROM tce.user WHERE user.id = @Id;", new { id = id });
+                return _conn.QueryFirstOrDefault<UserModel>("SELECT * FROM tce.user WHERE user.id = @Id;", new { id = id });
             }
         }
 
