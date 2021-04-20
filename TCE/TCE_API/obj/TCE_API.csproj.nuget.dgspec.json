@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj": {}
+    "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj": {
+    "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
+        "projectUniqueName": "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
         "projectName": "TCE_API",
-        "projectPath": "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
+        "projectPath": "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
         "packagesPath": "C:\\Users\\Smart\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\obj\\",
+        "outputPath": "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -30,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_DOMAIN\\TCE_DOMAIN.csproj": {
-                "projectPath": "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_DOMAIN\\TCE_DOMAIN.csproj"
+              "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_DOMAIN\\TCE_DOMAIN.csproj": {
+                "projectPath": "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_DOMAIN\\TCE_DOMAIN.csproj"
               }
             }
           }

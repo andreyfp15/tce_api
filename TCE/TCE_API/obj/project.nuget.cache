@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fV/TIglFLEdZ/n6XZB/Iqm95QDBa+8Ei8yNL7pWps3XIJB/2IrEBnqewg69nrJlFYyOhdG0E3s9EdvlH+q23ag==",
+  "dgSpecHash": "vOpz+/x9Wn6bRG78kHT9WmyllNke2uC7AHUSHkYDebEb3+RNgzK/PwLw3cyc1ZsgaXm48mQdYw4A7z+yxJEIKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Smart\\Source\\Repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
+  "projectFilePath": "C:\\Users\\Smart\\Source\\repos\\tce_api\\TCE\\TCE_API\\TCE_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Smart\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\Smart\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",

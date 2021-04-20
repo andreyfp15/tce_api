@@ -6,7 +6,7 @@ using TCE_API.Entities;
 
 namespace TCE_API.Models
 {
-    public class TextSentenceModel : TextSentenceEntity
+    public class CategoryModel : CategoryEntity
     {
     }
 }
