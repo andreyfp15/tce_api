@@ -34,11 +34,19 @@ namespace TCE_API.Repositories
             }
         }
 
+        public UserModel GetLogin(string Email, string Password)
+        {
+            using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                return _conn.QueryFirstOrDefault<UserModel>("SELECT * FROM user WHERE user.email = @email AND user.password = @password;", new { email = Email, password = Password });
+            }
+        }
+
         public int Insert(UserEntity user)
         {
             using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                return _conn.Execute("INSERT INTO user (email, password, isAdmin, active, createDate) VALUES ( @email, @password, @isAdmin, @active, @createDate);", new {
+                return _conn.QuerySingle<int>("INSERT INTO user (email, password, isAdmin, active, createDate) VALUES ( @email, @password, @isAdmin, @active, @createDate); SELECT id FROM tce.user ORDER BY id DESC LIMIT 1;", new {
                     email = user.email,
                     password = user.password,
                     isAdmin = user.isAdmin,
@@ -52,10 +60,9 @@ namespace TCE_API.Repositories
         {
             using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                return _conn.Execute("UPDATE user SET email = @email, password = @password, isAdmin = @isAdmin, active = @active, updateDate = @updateDate WHERE id = @id;", new
+                return _conn.Execute("UPDATE user SET email = @email, isAdmin = @isAdmin, active = @active, updateDate = @updateDate WHERE id = @id;", new
                 {
                     email = user.email,
-                    password = user.password,
                     isAdmin = user.isAdmin,
                     active = user.active,
                     updateDate = DateTime.Now,

@@ -11,5 +11,6 @@ namespace TCE_API.Entities
         public string expirationReason { get; set; }
         public string active { get; set; }
         public int userId { get; set; }
+        public string keepSigned { get; set; }
     }
 }

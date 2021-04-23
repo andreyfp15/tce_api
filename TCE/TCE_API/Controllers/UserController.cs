@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using TCE_API.Entities;
 using TCE_API.Models;
 using TCE_API.Repositories;
+using TCE_DOMAIN;
 
 namespace TCE_API.Controllers
 {
@@ -22,9 +25,23 @@ namespace TCE_API.Controllers
         }
 
         [HttpPost]
-        public void Post([FromServices] UserRepository userRepository, [FromBody] UserModel user)
+        public IActionResult Post([FromServices] UserRepository UserRepository, [FromBody] UserModel UserParam)
         {
-            userRepository.Insert(user);
+            try
+            {
+                UserParam.password = Helper.Enc(UserParam.password);
+
+                var IdUserInsert = UserRepository.Insert(UserParam);
+
+                if (IdUserInsert == 0)
+                    return BadRequest("Erro ao inserir usuário");
+
+                return Ok(UserRepository.Get(IdUserInsert));
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Erro ao inserir usuário");
+            }
         }
 
         [HttpPut]
@@ -38,5 +55,35 @@ namespace TCE_API.Controllers
         {
             userRepository.Delete(id);
         }
+
+        [Route("[action]")]
+        public SessionModel Login([FromServices] UserRepository UserRepository, [FromServices] SessionRepository SessionRepository, [FromBody] UserModel UserParam)
+        {
+            var User = UserRepository.GetLogin(UserParam.email, Helper.Enc(UserParam.password));
+
+            if (User != null)
+            {
+                var Session = new SessionEntity()
+                {
+                    token = Guid.NewGuid().ToString(),
+                    createDate = DateTime.Now,
+                    expirationDate = UserParam.keepSigned == "Y" ? DateTime.Now.AddYears(100) : DateTime.Now.AddHours(2),
+                    active = "Y",
+                    keepSigned = UserParam.keepSigned,
+                    userId = User.id
+                };
+
+                var IdSession = SessionRepository.Insert(Session);
+
+                if (IdSession == 0) return new SessionModel();
+
+                var SessionInserted = SessionRepository.Get(IdSession);
+
+                SessionInserted.User = User;
+            }
+
+            return new SessionModel();
+        }
+
     }
 }

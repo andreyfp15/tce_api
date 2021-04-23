@@ -22,6 +22,7 @@ namespace TCE_API
             services.AddSingleton<IConfiguration>(_ => Configuration);
 
             services.AddTransient<UserRepository>();
+            services.AddTransient<SessionRepository>();
 
             services.AddControllers();
         }
