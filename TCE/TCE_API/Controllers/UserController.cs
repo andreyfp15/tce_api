@@ -57,13 +57,16 @@ namespace TCE_API.Controllers
         }
 
         [Route("[action]")]
-        public SessionModel Login([FromServices] UserRepository UserRepository, [FromServices] SessionRepository SessionRepository, [FromBody] UserModel UserParam)
+        public IActionResult Login([FromServices] UserRepository UserRepository, [FromServices] SessionRepository SessionRepository, [FromBody] UserModel UserParam)
         {
-            var User = UserRepository.GetLogin(UserParam.email, Helper.Enc(UserParam.password));
-
-            if (User != null)
+            try
             {
-                var Session = new SessionEntity()
+                var User = UserRepository.GetLogin(UserParam.email, Helper.Enc(UserParam.password));
+
+                if (User != null)
+                    return BadRequest("Usuário ou senha não encontrados.");
+
+                var Session = new SessionModel()
                 {
                     token = Guid.NewGuid().ToString(),
                     createDate = DateTime.Now,
@@ -75,14 +78,17 @@ namespace TCE_API.Controllers
 
                 var IdSession = SessionRepository.Insert(Session);
 
-                if (IdSession == 0) return new SessionModel();
+                if (IdSession == 0)
+                    return BadRequest("Erro ao iniciar sessão.");
 
-                var SessionInserted = SessionRepository.Get(IdSession);
+                Session.id = IdSession;
 
-                SessionInserted.User = User;
+                return Ok(Session);
             }
-
-            return new SessionModel();
+            catch (Exception)
+            {
+                return BadRequest("Ocorreu um erro interno ao efetuar o login.");
+            }
         }
 
     }
