@@ -20,7 +20,7 @@ namespace TCE_DOMAIN
 
         public static string Enc(this string vlr)
         {
-            if (vlr.Length <= 4) return vlr;
+            if (vlr.Length <= 0) return vlr;
             var a = vlr;
             var c = CryptoCalc(a, "X2", true);
             var r = c;
@@ -29,7 +29,7 @@ namespace TCE_DOMAIN
 
         private static string CryptoCalc(string vlr, string type, bool IsEncrypt)
         {
-            if (vlr.Length <= 4) return vlr;
+            if (vlr.Length <= 0) return vlr;
 
             var result = "";
             if (IsEncrypt)

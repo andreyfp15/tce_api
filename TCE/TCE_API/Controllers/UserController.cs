@@ -29,6 +29,12 @@ namespace TCE_API.Controllers
         {
             try
             {
+                if (UserRepository.GetByEmail(UserParam.email) != null)
+                    return BadRequest("O Email: " + UserParam.email + " já está cadastrado.");
+
+                UserParam.active = "Y";
+                UserParam.isAdmin = "N";
+                UserParam.createDate = DateTime.Now;
                 UserParam.password = Helper.Enc(UserParam.password);
 
                 var IdUserInsert = UserRepository.Insert(UserParam);
@@ -38,7 +44,7 @@ namespace TCE_API.Controllers
 
                 return Ok(UserRepository.Get(IdUserInsert));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return BadRequest("Erro ao inserir usuário");
             }
@@ -56,6 +62,7 @@ namespace TCE_API.Controllers
             userRepository.Delete(id);
         }
 
+        [HttpPost]
         [Route("[action]")]
         public IActionResult Login([FromServices] UserRepository UserRepository, [FromServices] SessionRepository SessionRepository, [FromBody] UserModel UserParam)
         {
@@ -63,7 +70,7 @@ namespace TCE_API.Controllers
             {
                 var User = UserRepository.GetLogin(UserParam.email, Helper.Enc(UserParam.password));
 
-                if (User != null)
+                if (User == null)
                     return BadRequest("Usuário ou senha não encontrados.");
 
                 var Session = new SessionModel()
@@ -85,7 +92,7 @@ namespace TCE_API.Controllers
 
                 return Ok(Session);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 return BadRequest("Ocorreu um erro interno ao efetuar o login.");
             }

@@ -34,6 +34,14 @@ namespace TCE_API.Repositories
             }
         }
 
+        public UserModel GetByEmail(string Email)
+        {
+            using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                return _conn.QueryFirstOrDefault<UserModel>("SELECT * FROM user WHERE user.email = @Email;", new { email = Email });
+            }
+        }
+
         public UserModel GetLogin(string Email, string Password)
         {
             using (MySqlConnection _conn = new MySqlConnection(_config.GetConnectionString("DefaultConnection")))
