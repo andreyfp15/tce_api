@@ -77,7 +77,8 @@ namespace TCE_API.Controllers
                 {
                     token = Guid.NewGuid().ToString(),
                     createDate = DateTime.Now,
-                    expirationDate = UserParam.keepSigned == "Y" ? DateTime.Now.AddYears(100) : DateTime.Now.AddHours(2),
+                    //expirationDate = UserParam.keepSigned == "Y" ? DateTime.Now.AddYears(100) : DateTime.Now.AddHours(2),
+                    expirationDate = DateTime.Now.AddMinutes(1),
                     active = "Y",
                     keepSigned = UserParam.keepSigned,
                     userId = User.id
